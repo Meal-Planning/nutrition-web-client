@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.add-ingredients-section {
+  display: table-row;
+}
+
+.ingredient-search-section {
+  display: table-cell;
+  width: 25%;
+}
+
+.ingredient-list-section {
+  display: table-cell;
+  width: 75%;
+}
