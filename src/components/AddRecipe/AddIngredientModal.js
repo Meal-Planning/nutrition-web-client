@@ -209,14 +209,16 @@ class AddIngredientModal extends React.Component {
                     <label for="name">Name</label>
                     <input id="name" value={this.state.newIngredient.name} onChange={this.handleNameChange}/>
                 </div>
+                <br/>
                 <div>
                     <label for="cost">Cost</label>
                     <input id="cost" value={this.state.newIngredient.cost.price} onChange={this.handleCostPriceChange}/>
-                    <p>per</p>
+                    <span>per</span>
                     <select value={this.state.newIngredient.cost.unit} onChange={this.handleCostUnitChange}>
                         {units}
                     </select>
                 </div>
+                <br/>
                 <div>
                     <label for="quantity">Serving Size</label>
                     <input id="quantity" value={this.state.newIngredient.servingSize.quantity} onChange={this.handleServingQuantityChange}/>

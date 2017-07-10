@@ -13,7 +13,7 @@ echo ''
 echo '****************************************'
 echo '             Starting build             '
 echo '****************************************'
-cd ../web-client/
+cd ../nutrition-web-client/
 npm run build
 echo '****************************************'
 echo '            Build successful            '

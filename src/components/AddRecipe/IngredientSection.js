@@ -3,7 +3,7 @@ import React from 'react'
 import Modal from 'react-modal'
 
 // -- Import Nutrition Service
-import {GetIngredients, AddIngredient} from '../../services/nutrition-service.js';
+import {GetIngredients, AddIngredient, AddRecipe} from '../../services/nutrition-service.js';
 
 // -- Components
 import AddIngredientModal from "./AddIngredientModal";
