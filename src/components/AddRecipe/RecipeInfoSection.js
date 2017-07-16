@@ -41,23 +41,23 @@ class RecipeInfoSection extends React.Component {
             <div className="recipe-info">
                 <h2>Recipe Info Section</h2>
 
-                <label for="name">Name</label>
+                <label htmlFor="name">Name</label>
                 <input id="name" value={this.props.recipe.name} onChange={this.handleNameChange}/>
 
-                <label for="url">URL</label>
+                <label htmlFor="url">URL</label>
                 <input id="url" value={this.props.recipe.url} onChange={this.handleURLChange}/>
                 <br/>
 
-                <label for="servings">Servings</label>
+                <label htmlFor="servings">Servings</label>
                 <input id="servings" value={this.props.recipe.servings} onChange={this.handleServingsChange}/>
 
-                <label for="difficulty">Difficulty (0-10)</label>
+                <label htmlFor="difficulty">Difficulty (0-10)</label>
                 <input id="difficulty" value={this.props.recipe.difficultyRating} onChange={this.handleDifficultyChange}/>
 
-                <label for="activeTime">Active Time</label>
+                <label htmlFor="activeTime">Active Time</label>
                 <input id="activeTime" value={this.props.recipe.time.active} onChange={this.handleActiveTimeChange}/>
 
-                <label for="activeTotal">Total Time</label>
+                <label htmlFor="activeTotal">Total Time</label>
                 <input id="activeTotal" value={this.props.recipe.time.total} onChange={this.handleTotalTimeChange}/>
             </div>
         );

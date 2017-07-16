@@ -66,6 +66,9 @@ class AddRecipe extends React.Component {
         this.handleNotesChange = this.handleNotesChange.bind(this);
         this.handleNewNote = this.handleNewNote.bind(this);
         this.handleDeleteNote = this.handleDeleteNote.bind(this);
+
+        // -- SAVE RECIPE
+        this.saveNewRecipe = this.saveNewRecipe.bind(this);
     }
 
     // -- RECIPE INFO SECTION
@@ -242,9 +245,32 @@ class AddRecipe extends React.Component {
         });
     }
 
+    saveNewRecipe() {
+        //push new recipe to service and reset page if successful, otherwise, alert the error and allow the user to fix it
+
+        //may need to build out the custom JSON obejct for the recipe
+        const jsonString = JSON.stringify(this.state.recipe);
+        console.log(jsonString);
+
+
+        /*AddRecipe(jsonString).then((newRecipe) => {
+            if (Object.keys(newRecipe).length > 0)
+            {
+                //check that what is returned is valid, then clear out recipe page for new recipe
+            }
+        });*/
+    }
+
     render() {
+        const recipePageStyle={
+            width: '100%'
+        }
+        const saveButtonStyle={
+            float: 'right',
+            margin: '16px'
+        }
         return (
-            <div className="NewRecipePage">
+            <div className="NewRecipePage" style={recipePageStyle}>
                 <h1>Add Recipe Page</h1>
                 <RecipeInfoSection
                     recipe={this.state.recipe}
@@ -275,6 +301,8 @@ class AddRecipe extends React.Component {
                     onNotesChange={this.handleNotesChange}
                     onNoteAdded={this.handleNewNote}
                     onNoteDeleted={this.handleDeleteNote} />
+
+                <button style={saveButtonStyle} onClick={this.saveNewRecipe} >Save</button>
             </div>
         );
     }

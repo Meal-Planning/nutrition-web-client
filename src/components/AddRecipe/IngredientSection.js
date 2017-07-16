@@ -11,7 +11,7 @@ import AddIngredientModal from "./AddIngredientModal";
 // -- GLOBAL VARIABLES
 let MEASUREMENTS = ['Milliliters', 'Teaspoons', 'Tablespoons', 'Cups', 'Grams', 'Ounces', 'Pounds', 'Kilograms'];
 
-// -- local styling
+// -- STYLES
 const modalStyle = {
     content : {
         top                   : '50%',
@@ -213,10 +213,11 @@ class IngredientSearch extends React.Component {
     }
 
     saveNewIngredient(newIngredient) {
+        const jsonString = JSON.stringify(newIngredient);
         //push new ingredient to service
 
         // **** this is working properly, on both the front end and back end
-        AddIngredient(newIngredient).then((newIngredient) => {
+        /*AddIngredient(newIngredient).then((newIngredient) => {
 
             if (Object.keys(newIngredient).length > 0)
             {
@@ -232,7 +233,7 @@ class IngredientSearch extends React.Component {
                 //this.loadIngredientSource();
             }
             this.setState({searchText: ''});
-        });
+        });*/
 
         this.setState({modalOpen: false});
     }
@@ -247,7 +248,12 @@ class IngredientSearch extends React.Component {
     }
 
     render() {
-        var self = this;
+        var self = this;        
+        const ingredientSearchBox = {
+            height: '200px',
+            width: '250px',
+            overflow: 'scroll'
+        };
         var rows = [];
         this.state.filteredIngredients.forEach(function (ingredient, index) {
             rows.push(<IngredientSearchItem key={ingredient.ingredientId}
@@ -259,12 +265,15 @@ class IngredientSearch extends React.Component {
             <div className="ingredient-search-section">
                 <h3>Ingredients Search</h3>
                 <input type="search" placeholder="Search for ingredient..." value={this.state.searchText} onChange={this.handleSearchChange}/>
-                <ul>
-                    {rows}
-                </ul>
+                <div style={ingredientSearchBox}>
+                    <ul>
+                        {rows}
+                    </ul>
+                </div>
                 <button onClick={this.addNewIngredient}>Add New +</button>
                 <Modal isOpen={this.state.modalOpen}
-                       style={modalStyle}>
+                       style={modalStyle}
+                       contentLabel="Add Ingredient">
                     <AddIngredientModal onCancel={self.cancelNewIngredient} onSave={self.saveNewIngredient} />
                 </Modal>
             </div>
