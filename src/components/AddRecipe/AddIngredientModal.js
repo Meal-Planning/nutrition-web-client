@@ -236,7 +236,7 @@ class AddIngredientModal extends React.Component {
         };
         var commonalityRates = [1,2,3,4,5,6,7,8,9,10].map((rate, index) => <option key={rate} value={rate}>{rate}</option> );
         var units = MEASUREMENTS.map((measurement, index) => <option key={measurement} value={measurement}>{measurement}</option> );
-        var nutritionFacts = this.state.newIngredient.measurements.map((measurement, index) => <NutritionFact key={measurement} index={index}
+        var nutritionFacts = this.state.newIngredient.measurements.map((measurement, index) => <NutritionFact key={index} index={index}
                                                                                                               measurement={measurement}
                                                                                                               handleMeasurementChange={this.handleMeasurementChange}
                                                                                                               removeMeasurement={this.removeNutritionFact} /> );
