@@ -219,7 +219,7 @@ class AddIngredientModal extends React.Component {
             name: this.state.newIngredient.name,
             ingredientId: this.state.newIngredient.name.toLowerCase().replace(' ', '_').replace(',', '_'),
             cost: this.state.newIngredient.cost,
-            commonalityFactor: this.state.newIngredient.commonalityFactor,
+            commonality: this.state.newIngredient.commonalityFactor,
             measurements: [], //this.state.newIngredient.measurements,
             allergies: [], //this.state.allergies.split(','),
             tags: [] //this.state.tags.split(',')

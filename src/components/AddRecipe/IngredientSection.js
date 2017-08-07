@@ -213,33 +213,26 @@ class IngredientSearch extends React.Component {
     }
 
     saveNewIngredient(newIngredient) {
-        const jsonString = JSON.stringify(newIngredient);
-        //push new ingredient to service
+        // -- push new ingredient to service
+        AddIngredient(JSON.stringify(newIngredient)).then((res) => {
 
-        // **** this is working properly, on both the front end and back end
-        /*AddIngredient(newIngredient).then((newIngredient) => {
-
-            if (Object.keys(newIngredient).length > 0)
+            if (res.ok)
             {
-                // ***** do we want to add the new ingredient to the list or reload the ingredient list from the backend?
+                // -- append new ingredient to ingredient search list
                 let newIngredients = JSON.parse(JSON.stringify(this.state.allIngredients));
                 newIngredients.push(newIngredient);
                 this.setState({
                     allIngredients: newIngredients,
                     filteredIngredients: newIngredients
                 });
-
-
-                //this.loadIngredientSource();
             }
+            // -- reset search text
             this.setState({searchText: ''});
-        });*/
-
+        });
         this.setState({modalOpen: false});
     }
 
     handleClose = () => {
-        // ***** clear newIngredient object in modal
         this.setState({modalOpen: false});
     };
 
