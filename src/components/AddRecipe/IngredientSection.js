@@ -42,13 +42,13 @@ class IngredientListItem extends React.Component {
 
     handleMeasurementChange(e) {
         let newIngredient = JSON.parse(JSON.stringify(this.props.ingredient));
-        newIngredient.measurement = e.target.innerText;
+        newIngredient.measurement = e.target.value;
         this.handleIngredientChange(newIngredient);
     }
 
     handleSectionChange(e) {
         let newIngredient = JSON.parse(JSON.stringify(this.props.ingredient));
-        newIngredient.section = e.target.innerText;
+        newIngredient.section = e.target.value;
         this.handleIngredientChange(newIngredient);
     }
 
