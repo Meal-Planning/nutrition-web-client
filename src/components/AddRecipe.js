@@ -1,6 +1,9 @@
 // -- Import core React tools
 import React from 'react'
 
+// -- Import Nutrition Service
+import { AddNewRecipe } from '../services/nutrition-service.js';
+
 // -- Components
 import DirectionSection from "./AddRecipe/DirectionSection";
 import IngredientSection from "./AddRecipe/IngredientSection";
@@ -247,18 +250,14 @@ class AddRecipe extends React.Component {
 
     saveNewRecipe() {
         //push new recipe to service and reset page if successful, otherwise, alert the error and allow the user to fix it
+        this.state.recipe.recipeId = this.state.recipe.name.toLowerCase().replace(' ', '_').replace(',', '_');
 
-        //may need to build out the custom JSON obejct for the recipe
-        const jsonString = JSON.stringify(this.state.recipe);
-        console.log(jsonString);
-
-
-        /*AddRecipe(jsonString).then((newRecipe) => {
-            if (Object.keys(newRecipe).length > 0)
+        AddNewRecipe(JSON.stringify(this.state.recipe)).then((res) => {
+            if (res.ok)
             {
-                //check that what is returned is valid, then clear out recipe page for new recipe
+                //***** what do we want to do if it's successful (or even if it's not)
             }
-        });*/
+        });
     }
 
     render() {

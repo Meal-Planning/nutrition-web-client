@@ -7,11 +7,11 @@ export function GetIngredients() {
     return genericGet("/api/ingredient");
 }
 
-export function AddIngredient(newIngredient) {
+export function AddNewIngredient(newIngredient) {
     return genericPost("/api/ingredient", newIngredient);
 }
 
-export function AddRecipe(newRecipe) {
+export function AddNewRecipe(newRecipe) {
     return genericPost("/api/recipe", newRecipe);
 }
 
