@@ -8,6 +8,8 @@ import {
 
 // -- Components
 import AddRecipe from "./components/AddRecipe";
+import AddUser from "./components/AddUser";
+import UserProfile from "./components/UserProfile";
 
 const Home = () => (
     <div>
@@ -61,12 +63,16 @@ const App = () => (
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/add-recipe">Add Recipe</Link></li>
+          <li><Link to="/add-user">Add User</Link></li>
+          <li><Link to="/user-profile">User Profile</Link></li>
         </ul>
 
         <hr/>
 
         <Route exact path="/" component={Home}/>
         <Route path="/add-recipe" component={AddRecipe}/>
+        <Route path="/add-user" component={AddUser}/>
+        <Route path="/user-profile" component={UserProfile}/>
       </div>
     </Router>
 )

@@ -15,6 +15,10 @@ export function AddNewRecipe(newRecipe) {
     return genericPost("/api/recipe", newRecipe);
 }
 
+export function AddNewUser(newUser) {
+    return genericPost("/api/user", newUser);
+}
+
 //********** Helpers **********
 
 function genericPost(url, body) {
