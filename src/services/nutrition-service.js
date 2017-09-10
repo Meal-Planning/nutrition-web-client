@@ -19,6 +19,22 @@ export function AddNewUser(newUser) {
     return genericPost("/api/user", newUser);
 }
 
+export function GetUsers() {
+    return genericGet("/api/user");
+}
+
+export function GetUser(email) {
+    return genericGet("/api/user/" + email);
+}
+
+export function UpdateUser(email, user) {
+    return genericPut("/api/user/" + email, user);
+}
+
+export function GetUserMacros(email) {
+    return genericGet("/api/user/" + email + "/macros");
+}
+
 //********** Helpers **********
 
 function genericPost(url, body) {
@@ -40,14 +56,33 @@ function genericPost(url, body) {
     });
 }
 
+function genericPut(url, body) {
+    return fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: body
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+        return responseJson;
+    })
+    .catch((error) => {
+        console.error(error);
+        return {};
+    });
+}
+
 function genericGet(url) {
-    return fetch('/api/ingredient')
+    return fetch(url)
         .then((response) => response.json())
         .then((responseJson) => {
             return responseJson;
         })
         .catch((error) => {
             console.error(error);
-            return [];
+            return {};
         });
 }

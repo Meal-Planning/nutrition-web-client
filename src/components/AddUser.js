@@ -67,7 +67,7 @@ class AddUser extends React.Component {
         };
 
         this.handleUserChange = this.handleUserChange.bind(this);
-        this.saveNewRecipe = this.saveNewRecipe.bind(this);
+        this.saveNewUser = this.saveNewUser.bind(this);
     }
 
     // -- USER INFO SECTION
@@ -78,7 +78,7 @@ class AddUser extends React.Component {
     }
 
     // -- SAVE USER
-    saveNewRecipe() {
+    saveNewUser() {
         //push new user to service and go to profile page if successful, otherwise, alert the error and allow the user to fix it
         var self = this;
 
@@ -89,6 +89,11 @@ class AddUser extends React.Component {
             else if (workoutLevel == 'Moderate') self.state.user.nutrition.weeklyExercise.moderate++;
             else if (workoutLevel == 'Heavy') self.state.user.nutrition.weeklyExercise.heavy++;
         });
+
+        this.state.user.body.weight.history.push({
+            date: new Date(),
+            weight: this.state.user.body.weight.current
+        })
 
         AddNewUser(JSON.stringify(this.state.user)).then((res) => {
             if (res.ok)
@@ -102,7 +107,8 @@ class AddUser extends React.Component {
     render() {
         if (this.state.redirect) {
             // -- redirect when User is saved successfully
-            return <Redirect push to="/user-profile" />;
+            var pushTo = "/user-profile/" + this.state.user.email;
+            return <Redirect push to={pushTo} />;
         }
         const addUserPageStyle={
             width: '100%'
@@ -126,7 +132,7 @@ class AddUser extends React.Component {
                 <MealplanSection
                     user={this.state.user}
                     onUserChange={this.handleUserChange} />
-                <button style={saveButtonStyle} onClick={this.saveNewRecipe} >Save</button>
+                <button style={saveButtonStyle} onClick={this.saveNewUser} >Save</button>
             </div>
         );
     }

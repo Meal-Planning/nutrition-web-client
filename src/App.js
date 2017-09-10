@@ -9,6 +9,7 @@ import {
 // -- Components
 import AddRecipe from "./components/AddRecipe";
 import AddUser from "./components/AddUser";
+import UserIndex from "./components/UserIndex";
 import UserProfile from "./components/UserProfile";
 
 const Home = () => (
@@ -64,7 +65,8 @@ const App = () => (
           <li><Link to="/">Home</Link></li>
           <li><Link to="/add-recipe">Add Recipe</Link></li>
           <li><Link to="/add-user">Add User</Link></li>
-          <li><Link to="/user-profile">User Profile</Link></li>
+          <li><Link to="/user-index">User Index</Link></li>
+          {/* <li><Link to="/user-profile/cgduzan@gmail.com">User Profile</Link></li> */}
         </ul>
 
         <hr/>
@@ -72,7 +74,8 @@ const App = () => (
         <Route exact path="/" component={Home}/>
         <Route path="/add-recipe" component={AddRecipe}/>
         <Route path="/add-user" component={AddUser}/>
-        <Route path="/user-profile" component={UserProfile}/>
+        <Route path="/user-index" component={UserIndex}/>
+        <Route path="/user-profile/:email" component={UserProfile}/>
       </div>
     </Router>
 )
